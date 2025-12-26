@@ -1,0 +1,45 @@
+experiment:
+  name: fraud_node_classification
+  seed: 42
+  output_dir: runs
+
+task:
+  scenario: fraud_detection
+  type: node_classification
+  label_type: binary
+
+graph:
+  num_nodes: 5000
+  model: er
+  avg_degree: 6
+  directed: false
+
+features:
+  numeric:
+    - name: transaction_count
+      distribution: lognormal
+    - name: avg_amount
+      distribution: normal
+
+  categorical:
+    - name: device_type
+      values: [mobile, desktop, tablet]
+
+labels:
+  positive_class_rate: 0.1
+
+model:
+  type: gcn
+  hidden_dim: 64
+  num_layers: 2
+
+training:
+  epochs: 50
+  learning_rate: 0.001
+  batch_size: 256
+  temperature: 1.0
+
+metrics:
+  - accuracy
+  - f1
+  - auc

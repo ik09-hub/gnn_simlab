@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+
+# Experiment outputs
+runs/
+
+# OS / editor
+.vscode/
+.DS_Store
